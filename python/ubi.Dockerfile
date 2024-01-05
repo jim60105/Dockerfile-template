@@ -15,6 +15,8 @@ RUN ln -s /usr/bin/python3.11 /usr/bin/python3 && \
 ### Build image
 FROM base AS build
 
+ARG BUILD_VERSION
+
 WORKDIR /app
 
 RUN python3 -m venv /venv
@@ -23,22 +25,9 @@ ENV PATH="/venv/bin:$PATH"
 ARG PIP_DISABLE_PIP_VERSION_CHECK=1
 ARG PIP_NO_CACHE_DIR=1
 
-RUN microdnf -y install python3.11-pip && \
-    microdnf -y clean all && \
-    ln -s /usr/bin/pip3.11 /usr/bin/pip3
-
-COPY fc2-live-dl/requirements.txt .
-RUN --mount=type=cache,target=/root/.cache/pip pip3 install dumb-init
-RUN --mount=type=cache,target=/root/.cache/pip pip3 install -r requirements.txt
-
-COPY fc2-live-dl/. .
-
-RUN --mount=type=cache,target=/root/.cache/pip pip3 install .
-
-RUN pip3.11 uninstall -y setuptools pip && \
-    pip3.11 uninstall -y setuptools && \
-    microdnf -y remove python3.11-pip && \
-    microdnf -y clean all 
+RUN pip3.11 install --no-cache-dir dumb-init yt-dlp==$BUILD_VERSION && \
+    pip3.11 uninstall -y setuptools pip && \
+    rm -rf /root/.cache/pip
 
 ### Final image
 FROM base AS final
@@ -49,14 +38,16 @@ ENV PATH="/venv/bin:$PATH"
 COPY --link --from=build /venv /venv
 
 # ffmpeg
-COPY --link --from=mwader/static-ffmpeg:6.0 /ffmpeg /usr/local/bin/
+COPY --link --from=mwader/static-ffmpeg:6.1.1 /ffmpeg /usr/bin/
+COPY --link --from=mwader/static-ffmpeg:6.1.1 /ffprobe /usr/local/bin/
 
-RUN mkdir -p /recordings && chown 1001:1001 /recordings
-VOLUME [ "/recordings" ]
+RUN mkdir -p /download && chown 1001:1001 /download
+VOLUME [ "/download" ]
 
 # Run as non-root user
 USER 1001
-WORKDIR /recordings
+WORKDIR /download
 
 STOPSIGNAL SIGINT
-ENTRYPOINT [ "/venv/bin/dumb-init", "--", "/venv/bin/fc2-live-dl" ]
+ENTRYPOINT [ "/venv/bin/dumb-init", "--", "/venv/bin/yt-dlp", "--no-cache-dir" ]
+CMD ["--help"]
