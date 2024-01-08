@@ -16,7 +16,7 @@ RUN ln -s /usr/bin/python3.11 /usr/bin/python3 && \
 ### Build image
 FROM base AS build
 
-RUN microdnf --setopt=install_weak_deps=0 --setopt=tsflags=nodocs -y install python3.11-pip && \
+RUN microdnf --setopt=install_weak_deps=0 --setopt=tsflags=nodocs -y install python3.11-pip findutils && \
     microdnf -y clean all
 
 # RUN mount cache for multi-arch: https://github.com/docker/buildx/issues/549#issuecomment-1788297892
@@ -27,8 +27,8 @@ WORKDIR /app
 
 # Install under /root/.local
 ENV PIP_USER="true"
-
-ARG PIP_DISABLE_PIP_VERSION_CHECK=1
+ARG PIP_NO_WARN_SCRIPT_LOCATION=0
+ARG PIP_ROOT_USER_ACTION="ignore"
 
 RUN --mount=type=cache,id=pip-$TARGETARCH$TARGETVARIANT,sharing=locked,target=/root/.cache/pip \
     --mount=source=fc2-live-dl/requirements.txt,target=requirements.txt \

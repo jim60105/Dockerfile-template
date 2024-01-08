@@ -10,6 +10,8 @@ WORKDIR /app
 
 # Install under /root/.local
 ENV PIP_USER="true"
+ARG PIP_NO_WARN_SCRIPT_LOCATION=0
+ARG PIP_ROOT_USER_ACTION="ignore"
 
 RUN --mount=type=cache,id=pip-$TARGETARCH$TARGETVARIANT,sharing=locked,target=/root/.cache/pip \
     --mount=source=fc2-live-dl/requirements.txt,target=requirements.txt \
