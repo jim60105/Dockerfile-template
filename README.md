@@ -1,19 +1,23 @@
 # Dockerfile template
 
-> [!WARNING]  
+> [!WARNING]
 > Please be aware that this repository is fully licensed under the GPLv3.
 
 This Dockerfile repository serves as a template for me to quickly start new Dockerfile projects, and conveniently copy and paste. These files are extracted from my previous projects, they cannot be used directly. They preserve the unique configurations of the original projects, along with my personal preferences and coding style. Kindly exercise caution when using them.
 
 [!markdown/README.md](!markdown/README.md): Search for `jim60105/Dockerfile-template` and `source/Dockerfile-template` and replace them with the name of the new repository.
 
-## Awesome Articles
+## Awesome Resources
 
 ### Best practices
 
 - [Docker Docs: Dockerfile Best Practices](https://docs.docker.com/develop/develop-images/instructions/)
 - [Openshift Docs: Creating images](https://docs.openshift.com/container-platform/4.14/openshift_images/create-images.html)
 - [IBM Docs: Best practices for designing a universal application image](https://developer.ibm.com/learningpaths/universal-application-image/design-universal-image)
+
+### Nginx
+
+- [NGINX Unprivileged Docker Image (Run as a non root, unprivileged user)](https://github.com/nginxinc/docker-nginx-unprivileged)
 
 ### Python
 
@@ -42,4 +46,4 @@ This program is free software: you can redistribute it and/or modify it under th
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with this program. If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
