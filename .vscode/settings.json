@@ -5,8 +5,11 @@
         "Dockerfiles",
         "gplv",
         "Jarek",
+        "Nextcloud",
         "Potiuk",
         "Sena",
-        "Virtualenv"
+        "streamlink",
+        "Virtualenv",
+        "ytarchive"
     ]
 }
