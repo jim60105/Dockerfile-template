@@ -1,0 +1,45 @@
+# Check this guide for more information about publishing to ghcr.io with GitHub Actions:
+# https://docs.github.com/en/packages/managing-github-packages-using-github-actions-workflows/publishing-and-installing-a-package-with-github-actions#upgrading-a-workflow-that-accesses-ghcrio
+
+# Build the Docker image and push it to the registry
+name: docker_publish
+
+on:
+  # Trigger the workflow on tags push that match the pattern v*, for example v1.0.0
+  push:
+    tags:
+      - "*"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets the permissions granted to the GITHUB_TOKEN for the actions in this job.
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  docker-tag:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Checkout submodule
+        run: |
+          cd static-ffmpeg && \
+          git fetch --all --tags && \
+          git checkout tags/${{ github.ref_name }} -b ${{ github.ref_name }}
+
+      - name: Build docker
+        uses: ./.github/workflows/docker-reused-steps
+        with:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          QUAY_USERNAME: ${{ secrets.QUAY_USERNAME }}
+          QUAY_TOKEN: ${{ secrets.QUAY_TOKEN }}
+          tag: ${{ github.ref_name }}

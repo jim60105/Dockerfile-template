@@ -3,13 +3,6 @@
         "Buildx",
         "distroless",
         "Dockerfiles",
-        "gplv",
-        "Jarek",
-        "Nextcloud",
-        "Potiuk",
-        "Sena",
-        "streamlink",
-        "Virtualenv",
-        "ytarchive"
+        "gplv"
     ]
 }
