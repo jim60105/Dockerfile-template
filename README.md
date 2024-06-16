@@ -3,7 +3,7 @@
 > [!WARNING]
 > Please be aware that this repository is fully licensed under the GPLv3.
 
-This Dockerfile repository serves as a template for me to quickly start new Dockerfile projects, and conveniently copy and paste. These files are extracted from my previous projects, they cannot be used directly. They preserve the unique configurations of the original projects, along with my personal preferences and coding style. Kindly exercise caution when using them.
+This repository collects all of my containerization works and serves as a template for quickly starting new projects. These files are extracted from my previous projects, they cannot be used directly. They preserve the unique configurations of the original projects, along with my personal preferences and coding style. Kindly exercise caution when using them.
 
 [!markdown/README.md](!markdown/README.md): Search for `jim60105/Dockerfile-template` and `source/Dockerfile-template` and replace them with the name of the new repository.
 
