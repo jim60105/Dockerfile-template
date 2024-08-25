@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "sillytavern.fullname" . }}
+  labels: {{- include "sillytavern.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {{- include "sillytavern.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels: {{- include "sillytavern.selectorLabels" . | nindent 8 }}
+    spec:
+      initContainers:
+        - name: init-sillytavern
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          volumeMounts:
+            - mountPath: /app/data
+              name: data
+          env:
+            - name: PASSWORD
+              value: {{ .Values.password }}
+          command: ["dumb-init", "--", "node", "recover.js", "default-user", "$(PASSWORD)"]
+
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - mountPath: /app/data
+              name: data
+          resources: {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "sillytavern.fullname" . }}

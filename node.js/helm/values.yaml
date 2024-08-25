@@ -1,0 +1,28 @@
+image:
+  repository: ghcr.io/jim60105/sillytavern
+  tag: latest
+  pullPolicy: IfNotPresent
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 200Mi
+  storageClass: openebs-jiva-csi-default
+
+ingress:
+  host: tavern.domain.com
+  annotations:
+    {}
+    # traefik.ingress.kubernetes.io/router.tls: 'true'
+    # traefik.ingress.kubernetes.io/router.tls.certresolver: cfdns
+    # traefik.ingress.kubernetes.io/router.tls.domains.0.main: '*.domain.com'
+
+password: 'SHOULD_CHANGE_THIS_PASSWORD'
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

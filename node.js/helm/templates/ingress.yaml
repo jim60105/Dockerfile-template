@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "sillytavern.fullname" . }}
+  labels:
+  {{- include "sillytavern.labels" . | nindent 4 }}
+{{- with .Values.ingress.annotations }}
+  annotations:
+{{ toYaml . | indent 4 }}
+{{- end }}
+spec:
+  ingressClassName: 'traefik'
+  rules:
+  - host: {{ .Values.ingress.host | quote }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: '{{ include "sillytavern.fullname" . }}'
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - {{ .Values.ingress.host | quote }}
+    secretName: sillytavern-tls

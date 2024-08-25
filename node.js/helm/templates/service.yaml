@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "sillytavern.fullname" . }}
+  labels: {{- include "sillytavern.labels" . | nindent 4 }}
+spec:
+  type: "ClusterIP"
+  ports:
+    - port: 80
+      targetPort: 8000
+      protocol: TCP
+  selector: {{- include "sillytavern.selectorLabels" . | nindent 4 }}
