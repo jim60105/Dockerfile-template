@@ -3,6 +3,7 @@
         "Buildx",
         "distroless",
         "Dockerfiles",
+        "DOCKERHUB",
         "gplv"
     ]
 }

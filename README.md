@@ -1,4 +1,4 @@
-# Dockerfile template
+# Containerfile template
 
 > [!WARNING]
 > Please be aware that this repository is fully licensed under the GPLv3.
@@ -7,7 +7,7 @@ This repository collects all of my containerization works and serves as a templa
 
 ## My works
 
-| Repository | Description | Dockerfile |
+| Repository | Description | Containerfile |
 |--|--|--|
 | [docker-whisperX](https://github.com/jim60105/docker-whisperX) | A Dockerfile and CI workflow focus on multi-stage building and optimal cache adjustment. It efficiently builds close to ***200*** Docker images, each with a size of ***10G,*** on a weekly basis using the GitHub free runner. | [🔗](https://github.com/jim60105/docker-whisperX/blob/master/Dockerfile) |
 | [docker-stable-diffusion-webui](https://github.com/jim60105/docker-stable-diffusion-webui) | Python ML project containerization and Docker build CI workflow fully on the GitHub free runner. The main goal of designing this image is to keep it ***small and follow best practices.*** Successfully controlled the size to around ***10GB,*** saving approximately ***1/3*** of the capacity compared to other existing solutions. | [🔗](https://github.com/jim60105/docker-stable-diffusion-webui/blob/master/Dockerfile)|
@@ -82,11 +82,11 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program. If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
 
 > [!CAUTION]
-> A GPLv3 licensed Dockerfile means that you ***MUST*** **distribute the source code with the same license**, if you
+> A GPLv3 licensed Containerfile means that you ***MUST*** **distribute the source code with the same license**, if you
 >
 > - Re-distribute the image. (You can simply point to this GitHub repository if you doesn't made any code changes.)
 > - Distribute a image that uses code from this repository.
-> - Or **distribute a image based on this image**. (`FROM ghcr.io/jim60105/Dockerfile-template` in your Dockerfile)
+> - Or **distribute a image based on this image**. (`FROM ghcr.io/jim60105/Containerfile-template` in your Containerfile)
 >
 > "Distribute" means to make the image available for other people to download, usually by pushing it to a public registry. If you are solely using it for your personal purposes, this has no impact on you.
 >

@@ -1,41 +1,41 @@
 # Project Name
 
-[![CodeFactor](https://www.codefactor.io/repository/github/jim60105/Dockerfile-template/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/jim60105/Dockerfile-template) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jim60105/Dockerfile-template/scan.yml?label=IMAGE%20SCAN&style=for-the-badge)](https://github.com/jim60105/Dockerfile-template/actions/workflows/scan.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/jim60105/Containerfile-template/badge?style=for-the-badge)](https://www.codefactor.io/repository/github/jim60105/Containerfile-template) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jim60105/Containerfile-template/scan.yml?label=IMAGE%20SCAN&style=for-the-badge)](https://github.com/jim60105/Containerfile-template/actions/workflows/scan.yml)
 
-This is the docker image for [Source/Project: Project details.](https://github.com/source/Dockerfile-template) from the community.
+This is the docker image for [Source/Project: Project details.](https://github.com/source/Containerfile-template) from the community.
 
-Get the Dockerfile at [GitHub](https://github.com/jim60105/Dockerfile-template), or pull the image from [ghcr.io](https://ghcr.io/jim60105/Dockerfile-template) or [quay.io](https://quay.io/repository/jim60105/Dockerfile-template?tab=tags).
+Get the Containerfile at [GitHub](https://github.com/jim60105/Containerfile-template), or pull the image from [ghcr.io](https://ghcr.io/jim60105/Containerfile-template) or [quay.io](https://quay.io/repository/jim60105/Containerfile-template?tab=tags).
 
 ## Usage Command
 
-Mount the current directory as `/output` and run Dockerfile-template with additional input arguments.  
+Mount the current directory as `/output` and run Containerfile-template with additional input arguments.  
 The downloaded files will be saved to where you run the command.
 
 ```bash
-docker run -it -v ".:/output" ghcr.io/jim60105/Dockerfile-template [options] [url]
+docker run -it -v ".:/output" ghcr.io/jim60105/Containerfile-template [options] [url]
 ```
 
-The `[options]`, `[url]` placeholder should be replaced with the options and arguments for Dockerfile-template. Check the [Dockerfile-template README](https://github.com/source/Dockerfile-template?tab=readme-ov-file#usage) for more information.
+The `[options]`, `[url]` placeholder should be replaced with the options and arguments for Containerfile-template. Check the [Containerfile-template README](https://github.com/source/Containerfile-template?tab=readme-ov-file#usage) for more information.
 
-You can find all available tags at [ghcr.io](https://github.com/jim60105/Dockerfile-template/pkgs/container/Dockerfile-template/versions?filters%5Bversion_type%5D=tagged) or [quay.io](https://quay.io/repository/jim60105/Dockerfile-template?tab=tags).
+You can find all available tags at [ghcr.io](https://github.com/jim60105/Containerfile-template/pkgs/container/Containerfile-template/versions?filters%5Bversion_type%5D=tagged) or [quay.io](https://quay.io/repository/jim60105/Containerfile-template?tab=tags).
 
 ## Available tags
 
-This repository contains three Dockerfiles for building Docker images based on different base images:
+This repository contains three Containerfiles for building images based on different base images:
 
-| Dockerfile                                     | Base Image                                                                                                                         |
+| Containerfile                                     | Base Image                                                                                                                         |
 | ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| [alpine.Dockerfile](alpine.Dockerfile)         | [Python official image 3.11-alpine](https://hub.docker.com/_/python/)                                                              |
-| [ubi.Dockerfile](ubi.Dockerfile)               | [Red Hat Universal Base Image 9 Minimal](https://catalog.redhat.com/software/containers/ubi9/ubi-minimal/615bd9b4075b022acc111bf5) |
-| [distroless.Dockerfile](distroless.Dockerfile) | [Google Distroless python3-debian12](https://github.com/GoogleContainerTools/distroless)                                           |
+| [alpine.Containerfile](alpine.Containerfile)         | [Python official image 3.11-alpine](https://hub.docker.com/_/python/)                                                              |
+| [ubi.Containerfile](ubi.Containerfile)               | [Red Hat Universal Base Image 9 Minimal](https://catalog.redhat.com/software/containers/ubi9/ubi-minimal/615bd9b4075b022acc111bf5) |
+| [distroless.Containerfile](distroless.Containerfile) | [Google Distroless python3-debian12](https://github.com/GoogleContainerTools/distroless)                                           |
 
-And, built with the following code version of Dockerfile-template: main branch, v2.2.0, v2.1.3.
+And, built with the following code version of Containerfile-template: main branch, v2.2.0, v2.1.3.
 
 | Code Version                                                                | Alpine                    | UBI          | Distroless          |
 | --------------------------------------------------------------------------- | ------------------------- | ------------ | ------------------- |
-| [main branch](https://github.com/source/Dockerfile-template)                | `alpine`, `latest`        | `ubi`        | `distroless`        |
-| [v2.2.0](https://github.com/source/Dockerfile-template/releases/tag/v2.2.0) | `v2.2.0`, `v2.2.0-alpine` | `v2.2.0-ubi` | `v2.2.0-distroless` |
-| [v2.1.3](https://github.com/source/Dockerfile-template/releases/tag/v2.1.3) | `v2.1.3`, `v2.1.3-alpine` | `v2.1.3-ubi` | `v2.1.3-distroless` |
+| [main branch](https://github.com/source/Containerfile-template)                | `alpine`, `latest`        | `ubi`        | `distroless`        |
+| [v2.2.0](https://github.com/source/Containerfile-template/releases/tag/v2.2.0) | `v2.2.0`, `v2.2.0-alpine` | `v2.2.0-ubi` | `v2.2.0-distroless` |
+| [v2.1.3](https://github.com/source/Containerfile-template/releases/tag/v2.1.3) | `v2.1.3`, `v2.1.3-alpine` | `v2.1.3-ubi` | `v2.1.3-distroless` |
 
 > [!TIP]
 > I've notice that that both the UBI version and the Distroless version offer no advantages over the Alpine version. So _**please use the Alpine version**_ unless you have specific reasons not to. All of these base images are great, some of them were simply not that suitable for our project.
@@ -44,7 +44,7 @@ And, built with the following code version of Dockerfile-template: main branch, 
 
 > [!IMPORTANT]  
 > Clone the Git repository recursively to include submodules:  
-> `git clone --recursive https://github.com/jim60105/Dockerfile-template.git`
+> `git clone --recursive https://github.com/jim60105/Containerfile-template.git`
 
 > [!NOTE]  
 > If you are using an earlier version of the docker client, it is necessary to [enable the BuildKit mode](https://docs.docker.com/build/buildkit/#getting-started) when building the image. This is because I used the `COPY --link` feature which enhances the build performance and was introduced in Buildx v0.8.  
@@ -53,22 +53,22 @@ And, built with the following code version of Dockerfile-template: main branch, 
 For example, if you want to build the alpine image:
 
 ```bash
-docker build -f alpine.Dockerfile -t Dockerfile-template:alpine .
+docker build -f alpine.Containerfile -t Containerfile-template:alpine .
 ```
 
 ## LICENSE
 
 > [!NOTE]  
-> The main program, [source/Dockerfile-template](https://github.com/source/Dockerfile-template), is distributed under [MIT](https://github.com/source/Dockerfile-template/blob/main/LICENSE).  
+> The main program, [source/Containerfile-template](https://github.com/source/Containerfile-template), is distributed under [MIT](https://github.com/source/Containerfile-template/blob/main/LICENSE).  
 > Please consult their repository for access to the source code and licenses.  
-> The following is the license for the Dockerfiles and CI workflows in this repository.
+> The following is the license for the Containerfiles and CI workflows in this repository.
 
 > [!CAUTION]
-> A GPLv3 licensed Dockerfile means that you _**MUST**_ **distribute the source code with the same license**, if you
+> A GPLv3 licensed Containerfile means that you _**MUST**_ **distribute the source code with the same license**, if you
 >
 > - Re-distribute the image. (You can simply point to this GitHub repository if you doesn't made any code changes.)
 > - Distribute a image that uses code from this repository.
-> - Or **distribute a image based on this image**. (`FROM ghcr.io/jim60105/Dockerfile-template` in your Dockerfile)
+> - Or **distribute a image based on this image**. (`FROM ghcr.io/jim60105/Containerfile-template` in your Containerfile)
 >
 > "Distribute" means to make the image available for other people to download, usually by pushing it to a public registry. If you are solely using it for your personal purposes, this has no impact on you.
 >
