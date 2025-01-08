@@ -67,8 +67,8 @@ docker build -f alpine.Containerfile -t Containerfile-template:alpine .
 > A GPLv3 licensed Containerfile means that you _**MUST**_ **distribute the source code with the same license**, if you
 >
 > - Re-distribute the image. (You can simply point to this GitHub repository if you doesn't made any code changes.)
-> - Distribute a image that uses code from this repository.
-> - Or **distribute a image based on this image**. (`FROM ghcr.io/jim60105/Containerfile-template` in your Containerfile)
+> - Distribute an image that uses code from this repository.
+> - Or **distribute an image based on this image**. (`FROM ghcr.io/jim60105/Containerfile-template` in your Containerfile)
 >
 > "Distribute" means to make the image available for other people to download, usually by pushing it to a public registry. If you are solely using it for your personal purposes, this has no impact on you.
 >
